@@ -27,7 +27,7 @@ def get_themes(theme_list_str,subtitles_path,save_path):
     )
     end_time = time.time()
     processing_time = end_time - start_time
-    
+    print(processing_time)
     return output_chart, f"Processing time: {processing_time:.2f} seconds"
 
 
