@@ -1,7 +1,9 @@
 import gradio as gr
 from theme_classifier import ThemeClassifier
+import time
 
 def get_themes(theme_list_str,subtitles_path,save_path):
+    start_time = time.time()
     theme_list = theme_list_str.split(',')
     theme_classifier = ThemeClassifier(theme_list)
     output_df = theme_classifier.get_themes(subtitles_path,save_path)
@@ -23,8 +25,10 @@ def get_themes(theme_list_str,subtitles_path,save_path):
         width=500,
         height=260
     )
-
-    return output_chart
+    end_time = time.time()
+    processing_time = end_time - start_time
+    
+    return output_chart, f"Processing time: {processing_time:.2f} seconds"
 
 
 def main():
